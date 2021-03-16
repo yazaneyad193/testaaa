@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        .home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 10vw 15vw;
+        }
+
+        .home div {
+            background-color: cornflowerblue;
+            color: white;
+            font-size: large;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <% jokes.forEach(data=> { %>
+            <div>
+                <p>
+                    <%=data.type%>
+                </p>
+                <p>
+                    <%=data.punchline%>
+                </p>
+                <form action="/favorites" method="POST">
+                    <input type="hidden" name="id" value="<%=data.id%>">
+                    <input type="hidden" name="type" value="<%=data.type%>">
+                    <input type="hidden" name="punchline" value="<%=data.punchline%>">
+                    <input type="hidden" name="setup" value="<%=data.setup%>">
+                    <input type="submit" value="Add Fav">
+
+                </form>
+            </div>
+
+            <% }) %>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>details</title>
+    <style>
+        .home {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 10vw 15vw;
+        }
+
+        .home div {
+            background-color: cornflowerblue;
+            color: white;
+            font-size: large;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+
+        <div>
+            <p>
+                <%=jokes.type%>
+            </p>
+            <p>
+                <%=jokes.punchline%>
+            </p>
+        </div>
+    </div>
+    <form action="/details/<%=jokes.id%>?_method=PUT" method="POST">
+        <input type="text" name="type" value="<%=jokes.type%>">
+        <input type="text" name="punchline" value="<%=jokes.punchline%>">
+        <input type="submit" value="UPDATE"><br>
+    </form>
+    <br>
+    <form action="/details/<%=jokes.id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE">
+    </form>
+</body>
+
+</html>
